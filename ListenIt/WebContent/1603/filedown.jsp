@@ -19,7 +19,7 @@
     String filename = "Sleep Away.mp3" ;
      
     // 실제 내보낼 파일명
-    String orgfilename = "Sleep Away.mp3" ;
+    String orgfilename = filename;
       
  
     InputStream in = null;

@@ -84,8 +84,8 @@
 			<tr class="song_list">
 				<td width="5%" ><c:out value="${bean.getId()}"/></td>
 				<td width="75%" ><c:out value="${bean.getSinger_name()}"/> - <c:out value="${bean.getSong_name()}"/></td>
-				<td width="10%" >듣기</td>
-				<td width="10%" >다운</td>
+				<td width="10%" ><a href="#" >듣기</a></td>
+				<td width="10%" ><a href="#" >다운</a></td>
 			</tr>
 			<tr class="song_emp_list">
 				<td colspan="4"></td>				
