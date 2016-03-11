@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import command.CommandAction;
-
+ 
 @WebServlet(
 		name = "BoardController", 
 		urlPatterns = { 

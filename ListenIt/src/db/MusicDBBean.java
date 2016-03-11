@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
-
+ 
 public class MusicDBBean {
 static MusicDBBean instance = new MusicDBBean();
 	
@@ -84,7 +84,7 @@ static MusicDBBean instance = new MusicDBBean();
 	
 	public int insertMP3(MusicDataBean bean){
 		int val = 0;
-		String sql = "INSERT INTO mp3 values(?,null,?,?,null,null,?,sysdate)";
+		String sql = "INSERT INTO mp3 values(?,null,?,?,?,?,null,null,?,sysdate)";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try{
@@ -93,7 +93,9 @@ static MusicDBBean instance = new MusicDBBean();
 			pstmt.setInt(1, getMaxID()+1);
 			pstmt.setString(2, bean.getSong_name());
 			pstmt.setString(3, bean.getSinger_name());
-			pstmt.setString(4, "Y");
+			pstmt.setString(4, bean.getFile_name());
+			pstmt.setString(5, bean.getUpload_name());
+			pstmt.setString(6, "Y");
 			val = pstmt.executeUpdate();			
 		}catch(Exception e){
 			e.printStackTrace();

@@ -10,9 +10,9 @@
 	<title>음악 올리기</title>
 	<script>
 	function goSubmit() {
-	    window.opener.name = "UploadProc"; // 부모창의 이름 설정
-	    document.fileForm.target = "UploadProc"; // 타켓을 부모창으로 설정
-	    document.fileForm.action = "/ListenIt/UploadProc.it";
+	    window.opener.name = "uploadProc"; // 부모창의 이름 설정
+	    document.fileForm.target = "uploadProc"; // 타켓을 부모창으로 설정
+	    document.fileForm.action = "/ListenIt/uploadProc.it";
 	    document.fileForm.submit();
 	    self.close();
 	}

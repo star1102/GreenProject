@@ -95,6 +95,6 @@
 		</table> 
    	</div>
 </div>
-   	
+   	${ requestScope.test }
 </body>
 </html>

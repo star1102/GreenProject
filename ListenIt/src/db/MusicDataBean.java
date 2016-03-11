@@ -1,5 +1,5 @@
 package db;
-
+ 
 public class MusicDataBean {
 	private int id;
 	private String genre;
@@ -9,7 +9,21 @@ public class MusicDataBean {
 	private String track_no;
 	private String album_img;
 	private String upload_date;
+	private String file_name;
+	private String upload_name;
 	
+	public String getFile_name() {
+		return file_name;
+	}
+	public void setFile_name(String file_name) {
+		this.file_name = file_name;
+	}
+	public String getUpload_name() {
+		return upload_name;
+	}
+	public void setUpload_name(String upload_name) {
+		this.upload_name = upload_name;
+	}
 	public int getId() {
 		return id;
 	}
