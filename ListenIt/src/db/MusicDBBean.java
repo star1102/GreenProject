@@ -114,7 +114,7 @@ static MusicDBBean instance = new MusicDBBean();
 		
 		ArrayList<MusicDataBean> rValue = null;
 		StringBuffer sql = new StringBuffer();
-		sql.append(" SELECT id,song_name,singer_name,upload_date FROM mp3 order by id desc");
+		sql.append(" SELECT id,file_name,song_name,singer_name,upload_date FROM mp3 order by id desc");
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -129,6 +129,7 @@ static MusicDBBean instance = new MusicDBBean();
 				if(rValue == null) rValue = new ArrayList();
 				MusicDataBean bean = new MusicDataBean();
 				bean.setId(rs.getInt("id"));
+				bean.setFile_name(rs.getString("file_name"));
 				bean.setSong_name(rs.getString("song_name"));
 				bean.setSinger_name(rs.getString("singer_name"));
 				bean.setUpload_date((rs.getString("upload_date").substring(0, 10)));

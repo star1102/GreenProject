@@ -85,7 +85,11 @@
 				<td width="5%" ><c:out value="${bean.getId()}"/></td>
 				<td width="75%" ><c:out value="${bean.getSinger_name()}"/> - <c:out value="${bean.getSong_name()}"/></td>
 				<td width="10%" ><a href="#" >듣기</a></td>
-				<td width="10%" ><a href="#" >다운</a></td>
+				<td width="10%" ><a href="/ListenIt/download.it?
+											file_name=${bean.getFile_name()}&
+											singer_name=${bean.getSinger_name()}&
+											song_name=${bean.getSong_name()}" >
+											다운</a></td>
 			</tr>
 			<tr class="song_emp_list">
 				<td colspan="4"></td>				
