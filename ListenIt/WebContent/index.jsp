@@ -14,6 +14,19 @@
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
 		<link rel="stylesheet" type="text/css" href="css/style9.css" />
 
+<script>
+function getCheckBox() {
+	for(i=0; i<10; i++){
+		var check = document.getElementById("check"+i);
+		if(check.style.display == "none"){
+			check.style.display="";
+		}else{
+			check.style.display="none";
+		}
+	}
+}
+</script>
+
 </head>
 
 <body>
@@ -30,7 +43,7 @@
 		</ul>
 	</div><!-- navi -->
     <div id="logo">
-	    <h1><img src="img/title.jpg" width="200" height="108" alt="logo" /></h1>		
+	    <a href="xmlParse.jsp"><h1><img src="img/title.jpg" width="200" height="108" alt="logo" /></h1></a>		
     </div><!-- logo -->    
     <div id="small_navi">
 		<ul>
@@ -60,30 +73,39 @@
   	<div id="list_t">
 		<table id="header">
 			<tr>
-				<td colspan="3" align="right"><a onclick="window.open('/ListenIt/uploadForm.it','','scrollbars=no, width=600,height=600,left=400,top=90');return false"><input type="button" value="올리기"></a></td>
+				<td align="left"><input type="button" value="편집" onclick="getCheckBox();"></td>
+				<td colspan="5" align="right">
+				<a onclick="window.open('/ListenIt/uploadForm.it','','scrollbars=no, width=600,height=600,left=400,top=90');return false">
+				<input type="button" value="올리기">
+				</a>
+				</td>
 			</tr>
 			<tr class="song_list">
-				<td width="10%" >번호</td>
+				<td width="5" id="check0" style="display:none;"><input type="checkbox"></td>
+				<td width="5%" >번호</td>
 				<td width="70%" >곡정보</td>
 				<td width="10%" >듣기</td>
 				<td width="10%" >다운</td>
 			</tr>
 			<tr class="song_emp_list">
-					<td colspan="4"></td>				
+					<td colspan="5"></td>				
 			</tr>
 			<c:if test = "${ total == 0 }">
 				<tr>
-					<td colspan="4" align="center">등록된 글이 없습니다.</td>
+					<td colspan="5" align="center">등록된 글이 없습니다.</td>
 				</tr>
 				<tr class="song_emp_list">
-					<td colspan="4"></td>				
+					<td colspan="5"></td>				
 				</tr>
 			</c:if>
-			
+			<% 
+			int i=0;
+			%>
 			<c:forEach var="bean" items="${ requestScope.list }">
 			<tr class="song_list">
+				<td width="5" id="check<%=++i %>" style="display:none;"><input type="checkbox"></td>
 				<td width="5%" ><c:out value="${bean.getId()}"/></td>
-				<td width="75%" ><c:out value="${bean.getSinger_name()}"/> - <c:out value="${bean.getSong_name()}"/></td>
+				<td width="70%" ><c:out value="${bean.getSinger_name()}"/> - <c:out value="${bean.getSong_name()}"/></td>
 				<td width="10%" ><a href="#" >듣기</a></td>
 				<td width="10%" ><a href="/ListenIt/download.it?
 											file_name=${bean.getFile_name()}&
@@ -92,13 +114,12 @@
 											다운</a></td>
 			</tr>
 			<tr class="song_emp_list">
-				<td colspan="4"></td>				
+				<td colspan="5"></td>				
 			</tr>
 			</c:forEach>
 			
 		</table> 
    	</div>
 </div>
-   	${ requestScope.test }
 </body>
 </html>

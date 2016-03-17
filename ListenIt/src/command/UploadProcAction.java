@@ -26,11 +26,10 @@ public class UploadProcAction implements CommandAction {
 
 		//저장 경로
 		String path = "D:\\music\\";
-		// 업로드 파일명
-	    String uploadFile = "";
 	    // 실제 저장할 파일명
 	    String newFileName = "";
-	    
+	    MusicDataBean bean = new MusicDataBean();
+		MusicDBBean DB = MusicDBBean.getInstance();
 	    int read = 0;
 	    byte[] buf = new byte[1024];
 	    FileInputStream fin = null;
@@ -38,28 +37,23 @@ public class UploadProcAction implements CommandAction {
 	    long currentTime = System.currentTimeMillis();  
 	    SimpleDateFormat simDf = new SimpleDateFormat("yyyyMMddHHmmss"); 
 		MultipartRequest multi = new MultipartRequest(req, path , 1024*1024*100 , "UTF-8", new DefaultFileRenamePolicy()); //new DefaultFileRenamePolicy()
-		String singer_name = multi.getParameter("singer_name");
-		String song_name = multi.getParameter("song_name");
 		
 		String[] singer_names = multi.getParameterValues("singer_name");
 		String[] song_names = multi.getParameterValues("song_name");
 
 		ArrayList<String> fileNames = new ArrayList<String>();
-		Enumeration<String> files = multi.getFileNames();
-		while(files.hasMoreElements()){
-			String name = files.nextElement();
-			fileNames.add(multi.getFilesystemName(name));
-			}
-		System.out.println(fileNames);
+		ArrayList<String> org_fileNames = new ArrayList<String>();
 		for(int i=0; i<singer_names.length; i++){
-			System.out.println(singer_names[i]+" - "+song_names[i]+"\n");
+			String name = multi.getFilesystemName("uploadFile"+i);
+			String org_name = multi.getOriginalFileName("uploadFile"+i);
+			fileNames.add(name);
+			org_fileNames.add(org_name);
+			//System.out.println(name + "\n" + fileNames);
 		}
-		
-		
-        // 실제 저장할 파일명(ex : 20140819151221.zip)
-        //newFileName = simDf.format(new Date(currentTime)) +"."+ uploadFile.substring(uploadFile.lastIndexOf(".")+1);
- 	 		
- 		
+		for(int i=0; i<singer_names.length; i++){
+			//System.out.println(singer_names[i]+" - "+song_names[i]+"\n");
+		}
+		 		
         for(int i=0; i<fileNames.size(); i++){
         	newFileName = fileNames.get(i).substring(0 , fileNames.get(i).lastIndexOf(".")) + 
 	 				"_" + 
@@ -87,19 +81,14 @@ public class UploadProcAction implements CommandAction {
 	            }
 	            fin.close();
 	            fout.close();
-	        }     
-        }
-		
-		MusicDataBean bean = new MusicDataBean();
-		MusicDBBean DB = MusicDBBean.getInstance();
-		for(int i=0; i<fileNames.size(); i++){
-			bean.setSinger_name(singer_names[i]);
+	        }
+	        bean.setSinger_name(singer_names[i]);
 			bean.setSong_name(song_names[i]);
 			bean.setFile_name(newFileName);
-			bean.setUpload_name(fileNames.get(i));
+			bean.setUpload_name(org_fileNames.get(i));
 			DB.insertMP3(bean);
-		}
-		
+        }
+				
 /* ------------------------------------------------------------- */
 		
 		String strPage = req.getParameter("page");

@@ -17,49 +17,57 @@
 	    self.close();
 	}
 	
+	var items = 0;
 	
 	function addItems(){ // 업로드 항목 추가 스크립트
-		var upload_table = document.getElementById("upload_table");
-		var index = upload_table.rows.length
-		if(index > 9){
+		items++;		
+		var title_table = document.getElementById("title_table");
+		
+		var index1 = title_table.rows.length;
+		var newTr1 = title_table.insertRow(index1);
+		
+			var newTd1 = newTr1.insertCell(0);
+			newTd1.className = "title";
+			newTd1.innerHTML = "제목";
+			
+			var newTd2 = newTr1.insertCell(1);
+			newTd2.innerHTML ="<input type='text' name='song_name'/>";
+			
+			var newTd3 = newTr1.insertCell(2);
+			newTd3.className = "title";
+			newTd3.innerHTML = "가수";
+			
+			var newTd4 = newTr1.insertCell(3);
+			newTd4.innerHTML ="<input type='text' name='singer_name'/>";
+		
+		var index2 = title_table.rows.length;
+		var newTr2 = title_table.insertRow(index2); 
+			
+			var newTd5 = newTr2.insertCell(0);
+			newTd5.colSpan = "3";
+			newTd5.className = "title";
+			
+			newTd5.innerHTML = 
+			"<input type='file' name='uploadFile" + items + "' id='uploadFile'>";
+			alert(items);
+			
+			var newTd6 = newTr2.insertCell(1);
+			newTd6.className = "title";
+			newTd6.innerHTML =
+			"<input type='button' value='추가' onclick='addItems();'>";
+			
+			//alert(title_table.rows.length)
+		if(index2 > 10){
 			alert("더이상 항목을 추가할 수 없습니다.");
 			return;
 		}
-		var newTr = upload_table.insertRow(index);
-		var newTd = newTr.insertCell(0);
-		newTd.align = "left";
-		//newTd.width = "100%";
-		newTd.innerHTML = 
-		"<input type='file' name='uploadFile" + index + "' id='uploadFile'>";
-		
-		
-		var upload_table1 = document.getElementById("title_table");
-		if(index > 9){
-			alert("더이상 항목을 추가할 수 없습니다.");
-			return;
-		}
-		var newTr1 = title_table.insertRow(index);
-		var newTd_no1 = newTr1.insertCell(0);
-		newTd_no1.innerHTML = "제목";
-		newTd_no1.className = "title";
-		var newTd1 = newTr1.insertCell(1);
-		newTd1.align = "left";
-		//newTd.width = "100%";
-		newTd1.innerHTML ="<input type='text' name='song_name'/>"
-		
-		var newTd_no2 = newTr1.insertCell(2);
-		newTd_no2.innerHTML = "가수";
-		newTd_no2.className = "title";
-		var newTd2 = newTr1.insertCell(3);
-		newTd2.align = "left";
-		//newTd.width = "100%";
-		newTd2.innerHTML ="<input type='text' name='singer_name'/>"
 		
 	}
 	</script>
 </head>
 <body>
 	<form name="fileForm" id="fileForm" method="post" action="/ListenIt/UploadProc.it" enctype="multipart/form-data">
+		<p class="title">** 게시글의 제목으로 반영됩니다 ex) 제목 - 가수 **</p>
 	    <table id="title_table">
 			<tr>
 				<!--  <td><input id="files-upload" type="file" multiple></td> 다중 업로드 -->
@@ -68,19 +76,15 @@
 				<td class="title">가수</td>
 				<td><input type="text" name="singer_name"/></td>
 			</tr>
+			
 			<tr>
-				<td class="title" colspan="4">** 게시글의 제목으로 반영됩니다 ex) 제목 - 가수 **</td>
+				<td class="title" colspan="3"><input type="file" name="uploadFile0" id="uploadFile"></td>
+				<td class="title"><input type="button" value="추가" onclick="addItems();"></td>
 			</tr>
 			
 		</table>
-		<br>
-		<table id="upload_table">
-			<tr>
-				<td><input type="file" name="uploadFile" id="uploadFile"></td>
-				<td><input type="button" value="추가" onclick="addItems();"></td>
-			</tr> 
-		</table>
-		<br><br><br><br>
+		<br><br>
+		
 	    <input type="submit" onclick="goSubmit()" value="올리기">
 </form>
 </body>
