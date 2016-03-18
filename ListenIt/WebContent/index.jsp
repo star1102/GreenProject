@@ -13,9 +13,11 @@
 		
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
 		<link rel="stylesheet" type="text/css" href="css/style9.css" />
-
+ 
 <script>
 function getCheckBox() {
+	var leng = list.rows.length;
+	alert(leng);
 	for(i=0; i<10; i++){
 		var check = document.getElementById("check"+i);
 		if(check.style.display == "none"){
@@ -24,13 +26,14 @@ function getCheckBox() {
 			check.style.display="none";
 		}
 	}
+	
 }
 </script>
 
 </head>
 
 <body>
- <div id="header">
+ <div class="header">
 	<div id="top_navi">
 	   <ul>
 			<li><a href="#">CATEGORY</a></li>
@@ -71,15 +74,16 @@ function getCheckBox() {
   
   <div id="content">	
   	<div id="list_t">
-		<table id="header">
-			<tr>
-				<td align="left"><input type="button" value="편집" onclick="getCheckBox();"></td>
-				<td colspan="5" align="right">
+  	<div class="header" id="big_navi">
+		  		<input type="button" value="편집" onclick="getCheckBox();">
+				<input type="button" value="선택듣기" onclick="#">
+				<input type="button" value="선택다운" onclick="#">
+				<input type="button" value="선택반전" onclick="#">
 				<a onclick="window.open('/ListenIt/uploadForm.it','','scrollbars=no, width=600,height=600,left=400,top=90');return false">
 				<input type="button" value="올리기">
 				</a>
-				</td>
-			</tr>
+	</div>				
+		<table class="header" id="list">
 			<tr class="song_list">
 				<td width="5" id="check0" style="display:none;"><input type="checkbox"></td>
 				<td width="5%" >번호</td>
@@ -103,7 +107,7 @@ function getCheckBox() {
 			%>
 			<c:forEach var="bean" items="${ requestScope.list }">
 			<tr class="song_list">
-				<td width="5" id="check<%=++i %>" style="display:none;"><input type="checkbox"></td>
+				<td width="5" id="check<%= ++i %>" style="display:none;"><input type="checkbox"></td>
 				<td width="5%" ><c:out value="${bean.getId()}"/></td>
 				<td width="70%" ><c:out value="${bean.getSinger_name()}"/> - <c:out value="${bean.getSong_name()}"/></td>
 				<td width="10%" ><a href="#" >듣기</a></td>
