@@ -12,87 +12,94 @@
 		content="width=divice-width,initial-scale=1.0">
 		
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
-		<link rel="stylesheet" type="text/css" href="css/style9.css" />
  
 <script>
 function getCheckBox() {
 	var leng = list.rows.length;
-	alert(leng);
-	for(i=0; i<10; i++){
+	for(i=0; i<leng / 2; i++){
 		var check = document.getElementById("check"+i);
+		var editButton = document.getElementById("editButton");
 		if(check.style.display == "none"){
 			check.style.display="";
+			editButton.value="편집 취소";
 		}else{
 			check.style.display="none";
+			editButton.value="편집";
 		}
 	}
-	
+	for(l=0; l<4; l++){
+		var hidden = document.getElementById("hidden"+l);
+		if(hidden.style.display == "none"){
+			hidden.style.display="";
+		}else{
+			hidden.style.display="none";
+		}
+	}
 }
+
+function checkANDclear(){
+	var count = list.rows.length / 2;
+	var captain = document.getElementById("check_0");
+	if(captain.checked == false){
+		for(i=1; i<count; i++){
+			var check = document.getElementById("check_"+i);
+			check.checked=false;
+		}
+	}
+	if(captain.checked == true){
+		for(i=1; i<count; i++){
+			var check = document.getElementById("check_"+i);
+			check.checked=true;
+		}
+	}
+}
+
+function checkReverse(){
+	var count = list.rows.length / 2;
+	var captain = document.getElementById("check_0");
+	for(i=1; i<count; i++){
+		var check = document.getElementById("check_"+i);
+		if(check.checked == false){
+			check.checked=true;
+		}else{
+			captain.checked=false;
+			check.checked=false;
+		}
+	}
+}
+
 </script>
 
 </head>
 
 <body>
- <div class="header">
-	<div id="top_navi">
-	   <ul>
-			<li><a href="#">CATEGORY</a></li>
-			<li><a href="#">LOGIN</a></li>
-	        <li><a href="#">JOIN US</a></li>
-		    <li><a href="#">BASKET</a></li>
-		    <li><a href="#">ORDER</a></li>
-		    <li><a href="#">MY SHOPPING</a></li>
-			<li><a href="#">MY INFO</a></li>
-		</ul>
-	</div><!-- navi -->
-    <div id="logo">
-	    <a href="xmlParse.jsp"><h1><img src="img/title.jpg" width="200" height="108" alt="logo" /></h1></a>		
-    </div><!-- logo -->    
-    <div id="small_navi">
-		<ul>
-			<li><a href="#">NOTICE</a></li>
-			<li><a href="#">REVIEW</a></li>
-			<li><a href="#">Q&A BOARE</a></li>
-			<li><a href="#">EVENT</a></li>
-		</ul>
-    </div> <!-- small_navi -->
-	<div id="big_navi">
-		<ul>
-			<li><a href="#">TOP_TEE</a><span class="boder"></span></li>
-			<li><a href="#">OUTER</a><span class="boder"></span></li>
-			<li><a href="#">OUTWEAR</a><span class="boder"></span></li>
-			<li><a href="#">BLOUSE</a><span class="boder"></span></li>
-			<li><a href="#">SKIRT</a><span class="boder"></span></li>
-			<li><a href="#">DRESS</a><span class="boder"></span></li>
-			<li><a href="#">TOP_OES.BAG<span class="boder"></span></a></li>
-			<li><a href="#">ACCESSORY<span class="boder"></span></a></li>
-			<li><a href="#">ON SALE<span class="boder"></span></a></li>
-		</ul>
 
-	</div><!-- big_navi -->
-  </div><!--header -->
-  
-  <div id="content">	
-  	<div id="list_t">
+<!-- TOP MENU -->  
+<jsp:include page="/top_menu.jsp" />
+<!-- /TOP MENU -->
+    
+<div id="content">	
+	<div id="list_t">
   	<div class="header" id="big_navi">
-		  		<input type="button" value="편집" onclick="getCheckBox();">
-				<input type="button" value="선택듣기" onclick="#">
-				<input type="button" value="선택다운" onclick="#">
-				<input type="button" value="선택반전" onclick="#">
+		  		<input type="button" value="편집" id="editButton" onclick="getCheckBox();">
+				<input type="button" value="선택듣기" id="hidden0" style="display:none;">
+				<input type="button" value="선택다운" id="hidden1" style="display:none;">
+				<input type="button" value="선택반전" id="hidden2" style="display:none;" onclick="checkReverse();" >
+				<input type="button" value="선택삭제" id="hidden3" style="display:none;">
 				<a onclick="window.open('/ListenIt/uploadForm.it','','scrollbars=no, width=600,height=600,left=400,top=90');return false">
 				<input type="button" value="올리기">
 				</a>
-	</div>				
+	</div>
 		<table class="header" id="list">
 			<tr class="song_list">
-				<td width="5" id="check0" style="display:none;"><input type="checkbox"></td>
+				<td width="5" id="check0" style="display:none;"><input type="checkbox" id="check_0" onclick="checkANDclear();"></td>
 				<td width="5%" >번호</td>
 				<td width="70%" >곡정보</td>
 				<td width="10%" >듣기</td>
 				<td width="10%" >다운</td>
 			</tr>
 			<tr class="song_emp_list">
-					<td colspan="5"></td>				
+					<td colspan="5"></td>
 			</tr>
 			<c:if test = "${ total == 0 }">
 				<tr>
@@ -107,7 +114,7 @@ function getCheckBox() {
 			%>
 			<c:forEach var="bean" items="${ requestScope.list }">
 			<tr class="song_list">
-				<td width="5" id="check<%= ++i %>" style="display:none;"><input type="checkbox"></td>
+				<td width="5" id="check<%= ++i %>" style="display:none;"><input type="checkbox" id="check_<%=i%>"></td>
 				<td width="5%" ><c:out value="${bean.getId()}"/></td>
 				<td width="70%" ><c:out value="${bean.getSinger_name()}"/> - <c:out value="${bean.getSong_name()}"/></td>
 				<td width="10%" ><a href="#" >듣기</a></td>
@@ -122,7 +129,7 @@ function getCheckBox() {
 			</tr>
 			</c:forEach>
 			
-		</table> 
+		</table>
    	</div>
 </div>
 </body>
