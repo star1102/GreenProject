@@ -6,7 +6,7 @@
 	<meta charset="UTF-8"
 		name="viewprot"
 		content="width=divice-width,initial-scale=1.0">
-<title>LOGIN</title>
+<title>로그인</title>
 <link rel="stylesheet" type="text/css" href="css/style.css" />
 <script>
 
@@ -23,6 +23,8 @@
 		alert("비밀번호를 올바르게 입력해주세요");
 		return;
 	}
+	
+	
 	frm.method="get";
 	frm.action="./join.html"; //넘어간화면
 	frm.submit(); //등록이 될수 있는 조건이면, 정보를 보내겠다.
@@ -59,7 +61,7 @@
 
 	<table align="center" height="50" style="margin-top:1%" class="mo">
 		<tr>
-			<td><a style="text-decoration:none; color:black;" href="">회원가입 | </a></td>
+			<td><a style="text-decoration:none; color:black;" href="/ListenIt/registerForm.it">회원가입 | </a></td>
 			<td><a style="text-decoration:none; color:black;" href="">아이디 찾기 | </a></td>
 			<td><a style="text-decoration:none; color:black;" href="">비밀번호 찾기 </a></td>
 		</tr>

@@ -4,23 +4,16 @@
  <div class="header">
 	<div id="top_navi">
 	   <ul>
-			<li><a href="/ListenIt/loginForm.jsp">로그인</a></li>
-			<li><a href="#">회원가입</a></li>
+			<li><a href="/ListenIt/loginForm.it">로그인</a></li>
+			<li><a href="/ListenIt/registerForm.it">회원가입</a></li>
 			<li><a href="#">계정 찾기</a></li>
+			<li><a href="/ListenIt/memberList.it">회원 관리</a></li>
 		</ul>
 	</div><!-- navi -->
     <span id="logo">
 	    <a href="xmlParse.jsp"><img src="img/title.jpg" width="200" height="108" alt="logo" /></a>	
     </span><!-- logo -->
-        
-    <div id="small_navi">
-		<ul>
-			<li><a href="#">NOTICE</a></li>
-			<li><a href="#">REVIEW</a></li>
-			<li><a href="#">Q&A BOARE</a></li>
-			<li><a href="#">EVENT</a></li>
-		</ul>
-    </div> <!-- small_navi -->
+   
 	<div id="big_navi">
 		<ul>
 			<li><a href="#">TOP_TEE</a><span class="boder"></span></li>

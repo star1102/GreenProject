@@ -12,7 +12,18 @@ create table mp3
 	, upload_date	date				default sysdate
 );
 
-DROP TABLE mp3;
+create table member
+(	
+	no				number			unique not null,
+	id				varchar2(20)	 primary key,
+	pwd				varchar2(20)	 not null,
+	email			varchar2(40)	 not null,
+	birth_date  	varchar2(12)	 not null,
+	register_date 	date		 	 default sysdate
+);
+SELECT * FROM member where id='idtest';
+SELECT * FROM member;
+DROP TABLE member;
 SELECT * FROM mp3;
 DELETE FROM mp3;
 
