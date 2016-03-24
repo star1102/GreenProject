@@ -7,7 +7,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Properties;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -16,8 +15,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.RequestDispatcher;
 
 import command.CommandAction;
+import command.ForwardAction;
  
 @WebServlet(
 		name = "BoardController", 
@@ -72,16 +73,19 @@ public class Controller extends HttpServlet {
     	}    	
     }
 
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String command = request.getRequestURI();
 		//command = "/Board2/index.do"
 		command = command.substring(request.getContextPath().length());
 		//command = "/index.do";
 		CommandAction obj = commandSet.get(command);
-		String goUrl = obj.process(request, response);
-		if(goUrl != null){
-			RequestDispatcher dispatcher 
-					= request.getRequestDispatcher(goUrl);
+		
+		ForwardAction forward = obj.process(request, response);
+
+		if(forward.getRedirect()){
+			response.sendRedirect(forward.getPath());
+		}else{
+			RequestDispatcher dispatcher = request.getRequestDispatcher(forward.getPath());
 			dispatcher.forward(request, response);
 		}
 	}

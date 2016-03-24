@@ -73,7 +73,6 @@ function checkReverse(){
 </head>
 
 <body>
-
 <!-- TOP MENU -->  
 <jsp:include page="/top_menu.jsp" />
 <!-- /TOP MENU -->

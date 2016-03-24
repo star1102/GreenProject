@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 public class DownloadProcAction implements CommandAction {
 
 	@Override
-	public String process(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+	public ForwardAction process(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
 		req.setCharacterEncoding("UTF-8");
@@ -96,6 +96,8 @@ public class DownloadProcAction implements CommandAction {
 	    }catch(Exception e){
 	      e.printStackTrace();
 	    }
+		
+
 		return null;
 	}
 }

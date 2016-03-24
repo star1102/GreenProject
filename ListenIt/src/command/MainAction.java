@@ -13,7 +13,7 @@ import db.MusicDataBean;
 public class MainAction implements CommandAction {
  
 	@Override
-	public String process(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+	public ForwardAction process(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		String returnURL = "";
 		returnURL = "/index.jsp";
 		
@@ -35,7 +35,9 @@ public class MainAction implements CommandAction {
 		req.setAttribute("list", list);
 		//req.setAttribute("start", startPage);
 		//req.setAttribute("end", endPage);
-		
-		return returnURL;
+		ForwardAction forward = new ForwardAction();
+		forward.setPath(returnURL);
+
+		return forward;
 	}
 }

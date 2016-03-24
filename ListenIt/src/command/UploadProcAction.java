@@ -22,7 +22,7 @@ import db.MusicDataBean;
 public class UploadProcAction implements CommandAction {
    
 	@Override
-	public String process(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+	public ForwardAction process(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
 		//저장 경로
 		String path = "D:\\music\\";
@@ -109,7 +109,11 @@ public class UploadProcAction implements CommandAction {
 		//req.setAttribute("start", startPage);
 		//req.setAttribute("end", endPage);
 		
-		return "/index_station.jsp";
+		ForwardAction forward = new ForwardAction();
+		forward.setPath("/ListenIt/index.it");
+		forward.setRedirect(true);
+		
+		return forward;
 	}
 
 }

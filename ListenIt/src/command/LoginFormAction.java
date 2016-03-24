@@ -9,9 +9,12 @@ import javax.servlet.http.HttpServletResponse;
 public class LoginFormAction implements CommandAction {
 
 	@Override
-	public String process(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+	public ForwardAction process(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		return "/loginForm.jsp";
+		ForwardAction forward = new ForwardAction();
+		forward.setPath("/loginForm.jsp");
+
+		return forward;
 	}
 
 }
