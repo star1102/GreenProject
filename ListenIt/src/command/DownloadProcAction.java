@@ -96,8 +96,9 @@ public class DownloadProcAction implements CommandAction {
 	    }catch(Exception e){
 	      e.printStackTrace();
 	    }
-		
-
-		return null;
+	    ForwardAction forward = new ForwardAction();
+	    forward.setPath("/ListenIt/index.it");
+	    forward.setRedirect(true);
+	    return forward;
 	}
 }

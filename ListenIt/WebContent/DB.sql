@@ -11,7 +11,7 @@ create table mp3
 	, album_img		varchar2(13)		default 'y'
 	, upload_date	date				default sysdate
 );
-
+DELETE FROM mp3;
 create table member
 (	
 	no				number			unique not null,

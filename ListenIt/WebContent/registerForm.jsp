@@ -91,7 +91,7 @@ $(document).ready(function(){
 			$("#emailCheck").html("OK!");
 		}else if(!EMAIL_CHECK.test($("#email").val()) && $("#email").val().length > 10){
 			$("#emailCheck").html("올바른 E-Mail을 입력해주세요.");
-		}	
+		}
 	});
 });
 </script>
