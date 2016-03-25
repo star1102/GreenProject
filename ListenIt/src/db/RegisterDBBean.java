@@ -85,6 +85,38 @@ public class RegisterDBBean {
 		return val; 
 	}
 	
+	public int loginCheck(RegisterDataBean bean){
+		int val = 0;
+		String sql = "SELECT * FROM member where id=? and pwd=?";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try{
+			conn = getConn();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1 , bean.getId());
+			pstmt.setString(2 , bean.getPwd());
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				val = 1;	// 아이디와 비밀번호가 일치한 경우
+			}else{
+				val = 0;		// 그렇지 않은 경우
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			try{
+				if(rs != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(conn != null)conn.close();
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+		return val; 
+	}
+	
 	public int insertMember(RegisterDataBean bean){
 		int val = 0;
 		String sql = "INSERT INTO member values(?,?,?,?,?,sysdate)";

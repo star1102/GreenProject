@@ -29,7 +29,7 @@ public class UploadProcAction implements CommandAction {
 	    // 실제 저장할 파일명
 	    String newFileName = "";
 	    MusicDataBean bean = new MusicDataBean();
-		MusicDBBean DB = MusicDBBean.getInstance();
+		MusicDBBean db = MusicDBBean.getInstance();
 	    int read = 0;
 	    byte[] buf = new byte[1024];
 	    FileInputStream fin = null;
@@ -86,7 +86,7 @@ public class UploadProcAction implements CommandAction {
 			bean.setSong_name(song_names[i]);
 			bean.setFile_name(newFileName);
 			bean.setUpload_name(org_fileNames.get(i));
-			DB.insertMP3(bean);
+			db.insertMP3(bean);
         }
 				
 /* ------------------------------------------------------------- */

@@ -10,7 +10,7 @@
 <link rel="stylesheet" type="text/css" href="css/style.css" />
 <script>
 
-  function enter(){
+  function login(){
 
 	var frm=document.loginform;
 
@@ -19,14 +19,14 @@
 		return;
 	}
 
-	if(frm.pw.value.length<3){
+	if(frm.pwd.value.length<3){
 		alert("비밀번호를 올바르게 입력해주세요");
 		return;
 	}
 	
 	
-	frm.method="get";
-	frm.action="./join.html"; //넘어간화면
+	frm.method="post";
+	frm.action="/ListenIt/loginProc.it"; //넘어간화면
 	frm.submit(); //등록이 될수 있는 조건이면, 정보를 보내겠다.
 	}
 </script>
@@ -46,13 +46,15 @@
 		</table>
 	<table align="center" height="40" width="430" border="0" style="border:solid 4px #000000; margin-top:1%">
 		<tr>
-			<td><input type="password" name="pw" value=""  placeholder="비밀번호" style="height:40px; width:430px"></td>
+			<td><input type="password" name="pwd" value=""  placeholder="비밀번호" style="height:40px; width:430px"></td>
 		</tr>
 	</table>
 
-	<table align="center" height="40" style="margin-top:1%">
+	<table style="margin-top:1%">
 	<tr>
-		<td><input type="button" name="login" value="로그인" style="height:50px; width:430px;  background-color:#000000; color:white; font-size:16px; border:solid 1px #000000; " onClick="enter()"></td>
+		<td><input type="button" value="로그인" 
+		style = "height:50px; width:430px; background-color:#000000; color:white; font-size:16px; border:solid 1px #000000;"
+		 onclick = "login();"></td>
 	</tr>
 	</table>
 

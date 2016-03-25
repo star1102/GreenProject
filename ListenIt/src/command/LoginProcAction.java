@@ -9,37 +9,31 @@ import javax.servlet.http.HttpServletResponse;
 import db.RegisterDBBean;
 import db.RegisterDataBean;
 
-
-public class RegisterProcAction implements CommandAction {
+public class LoginProcAction implements CommandAction {
 
 	@Override
 	public ForwardAction process(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String id = req.getParameter("id");
 		String pwd = req.getParameter("pwd");
-		String birth_date = req.getParameter("birth_date");
-		String email = req.getParameter("email");
 		
 		RegisterDataBean bean = new RegisterDataBean();
 		RegisterDBBean db = RegisterDBBean.getInstance();
 		bean.setId(id);
 		bean.setPwd(pwd);
-		bean.setBirth_date(birth_date);
-		bean.setEmail(email);
 		
-		int result = db.insertMember(bean);
-		req.setAttribute("result" , result);
-		//System.out.println(result);
+		int check = db.loginCheck(bean); // 리턴값이 1이면 로그인을 시키고 0이면 로그인 불가
+		
 		ForwardAction forward = new ForwardAction();
+		req.setAttribute("idCheck", check);
+		System.out.println(check);
 		
-		
-		
-		if(result == 1){	//회원가입 성공
-			forward.setPath("/ListenIt/loginForm.it");
+		if(check == 1){
+			forward.setPath("/ListenIt/index.it");
 			forward.setRedirect(true);
 			return forward;
-		}else{				//실패
-			forward.setPath("/ListenIt/registerForm.it");
+		}else{
+			forward.setPath("/ListenIt/loginForm.it");
 			forward.setRedirect(true);
 			return forward;
 		}
