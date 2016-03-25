@@ -81,12 +81,13 @@ public class Controller extends HttpServlet {
 		CommandAction obj = commandSet.get(command);
 		
 		ForwardAction forward = obj.process(request, response);
-
-		if(forward.getRedirect()){
-			response.sendRedirect(forward.getPath());
-		}else{
-			RequestDispatcher dispatcher = request.getRequestDispatcher(forward.getPath());
-			dispatcher.forward(request, response);
+		if(forward != null){
+			if(forward.getRedirect()){
+				response.sendRedirect(forward.getPath());
+			}else{
+				RequestDispatcher dispatcher = request.getRequestDispatcher(forward.getPath());
+				dispatcher.forward(request, response);
+			}
 		}
 	}
 }

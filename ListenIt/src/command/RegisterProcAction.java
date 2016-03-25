@@ -29,7 +29,7 @@ public class RegisterProcAction implements CommandAction {
 		
 		int result = DB.insertMember(bean);
 		req.setAttribute("result" , result);
-		System.out.println(result);
+		//System.out.println(result);
 		ForwardAction forward = new ForwardAction();
 		
 		

@@ -49,7 +49,7 @@
 			
 			newTd5.innerHTML = 
 			"<input type='file' name='uploadFile" + items + "' id='uploadFile'>";
-			alert(items);
+			//alert(items);
 			
 			var newTd6 = newTr2.insertCell(1);
 			newTd6.className = "title";
