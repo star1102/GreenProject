@@ -10,10 +10,39 @@
 	<meta charset="UTF-8"
 		name="viewprot"
 		content="width=divice-width,initial-scale=1.0">
-		
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
- 
+		<script src="/ListenIt/js/jquery-1.11.3.min.js"></script>
 <script>
+function login(){
+
+	var frm = document.loginform;
+	
+	$.ajax({
+        type : "POST",
+        url : "/ListenIt/loginProc.it",
+        data:
+        {
+        	id : frm.id.value 
+        	, pwd : frm.pwd.value
+        	},
+        success : function(check) {
+            console.log(check);
+            
+            if(check == 0){
+            	alert("아이디 또는 비밀번호를 다시 확인하세요.")
+            	return;
+            }else if(check == 1){
+            	frm.method="post";
+            	frm.action="/ListenIt/index.it"; //넘어간화면
+            	frm.submit(); //등록이 될수 있는 조건이면, 정보를 보내겠다.
+            }
+        },
+        error : function(e){
+        	alert("ERROR : 고객센터로 문의 부탁드립니다.");
+        }
+    });
+}
+
 function getCheckBox() {
 	var leng = list.rows.length;
 	for(i=0; i<leng / 2; i++){
@@ -74,12 +103,59 @@ function checkReverse(){
 
 <body>
 <!-- TOP MENU -->  
-<jsp:include page="/top_menu.jsp" />
+ <div class="header">
+	<div id="top_navi">
+	   <ul>
+	   		<li><a href="/ListenIt/index.it">HOME</a></li>
+			<li><a href="/ListenIt/loginForm.it">LOGIN</a></li>
+			<li><a href="/ListenIt/registerForm.it">SING UP</a></li>
+			<li><a href="/ListenIt/memberList.it">회원 관리</a></li>
+		</ul>
+	</div><!-- navi -->
+<br>
+	<table>
+		<tr>
+			<td>
+			<span id="logo">
+		    <a href="xmlParse.jsp"><img src="img/title.jpg" width="200" height="108" alt="logo" /></a>
+	    	</span><!-- logo -->
+	    	</td>
+    		
+    		<td style = "padding-left:500px;">
+    		<form name="loginform">
+    		<table>	
+			    <tr><td><input type="text" name="id" value="" placeholder="아이디" style="height:20px; width:160px;"></td></tr>
+			    <tr><td><input type="password" name="pwd" value=""  placeholder="비밀번호" style="height:20px; width:160px"></td></tr>
+			    <tr><td><input type="button" value="로그인" 
+				style = "height:30px; width:160px; background-color:#000000; color:white; font-size:16px; border:solid 1px #000000;"
+				 onclick = "login();"></td></tr>
+			</table>
+			</form>
+			</td>
+		</tr>
+	</table>
+<br>
+   
+	<div id="big_navi">
+		<ul>
+			<li><a href="#">TOP_TEE</a><span class="boder"></span></li>
+			<li><a href="#">OUTER</a><span class="boder"></span></li>
+			<li><a href="#">OUTWEAR</a><span class="boder"></span></li>
+			<li><a href="#">BLOUSE</a><span class="boder"></span></li>
+			<li><a href="#">SKIRT</a><span class="boder"></span></li>
+			<li><a href="#">DRESS</a><span class="boder"></span></li>
+			<li><a href="#">TOP_OES.BAG<span class="boder"></span></a></li>
+			<li><a href="#">ACCESSORY<span class="boder"></span></a></li>
+			<li><a href="#">ON SALE<span class="boder"></span></a></li>
+		</ul>
+	</div>
+  </div>
+<br>
 <!-- /TOP MENU -->
     
 <div id="content">	
 	<div id="list_t">
-  	<div class="header" id="big_navi">
+  	<div class="header">
 		  		<input type="button" value="편집" id="editButton" onclick="getCheckBox();">
 				<input type="button" value="선택듣기" id="hidden0" style="display:none;">
 				<input type="button" value="선택다운" id="hidden1" style="display:none;">

@@ -98,10 +98,13 @@ public class RegisterDBBean {
 			pstmt.setString(1 , bean.getId());
 			pstmt.setString(2 , bean.getPwd());
 			rs = pstmt.executeQuery();
-			if(rs.next()){
+			/*if(rs.next()){
 				val = 1;	// 아이디와 비밀번호가 일치한 경우
 			}else{
 				val = 0;		// 그렇지 않은 경우
+			}*/
+			while(rs.next()){
+				++val;
 			}
 		}catch(Exception e){
 			e.printStackTrace();

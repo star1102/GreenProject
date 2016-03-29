@@ -21,7 +21,7 @@ create table member
 	birth_date  	varchar2(12)	 not null,
 	register_date 	date		 	 default sysdate
 );
-SELECT * FROM member where id='starewq' and pwd = 'rewaq';
+SELECT * FROM member where id='test11' and pwd = 'test11';
 SELECT * FROM member;
 delete from member
 DROP TABLE member;

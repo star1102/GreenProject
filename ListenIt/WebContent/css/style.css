@@ -65,7 +65,7 @@
 	#big_navi{
 	  overflow:hidden;
 	  line-height:30px;
-	  border-bottom:2px solid;   /* 하단경계선 */
+	  border-bottom:2px solid;    /* 하단경계선 */
 	}
 	#big_navi ul li{
       float:left;

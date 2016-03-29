@@ -177,7 +177,7 @@ $(document).ready(function(){
 
 	<table style="margin-top:1%">
 	<tr>
-		<td><input type="button" name="register" value="회원가입" style="height:50px; width:400px;  
+		<td><input type="button" name="register" value="회원가입" style="height:50px; width:430px;  
 								background-color:#000000; color:white; font-size:16px; border:solid 1px #000000; " onclick="finishRegister();">
 		</td>
 	</tr>

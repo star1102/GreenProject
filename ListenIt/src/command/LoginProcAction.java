@@ -25,17 +25,12 @@ public class LoginProcAction implements CommandAction {
 		int check = db.loginCheck(bean); // 리턴값이 1이면 로그인을 시키고 0이면 로그인 불가
 		
 		ForwardAction forward = new ForwardAction();
-		req.setAttribute("idCheck", check);
-		System.out.println(check);
 		
-		if(check == 1){
-			forward.setPath("/ListenIt/index.it");
-			forward.setRedirect(true);
-			return forward;
-		}else{
-			forward.setPath("/ListenIt/loginForm.it");
-			forward.setRedirect(true);
-			return forward;
-		}
+		//System.out.println(check);
+		
+		req.setAttribute("check", check);
+		forward.setPath("/idCheck.jsp");
+		return forward;
+		
 	}
 }
