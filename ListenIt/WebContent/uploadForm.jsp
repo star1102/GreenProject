@@ -7,7 +7,9 @@
 		name="viewprot"
 		content="width=divice-width,initial-scale=1.0">
 	<link rel="stylesheet" href="css/upload.css"/>
+	
 	<title>음악 올리기</title>
+	
 	<script>
 	function goSubmit() {	//팝업창 submit 스크립트
 	    window.opener.name = "uploadProc"; // 부모창의 이름 설정
@@ -54,9 +56,11 @@
 			var newTd6 = newTr2.insertCell(1);
 			newTd6.className = "title";
 			newTd6.innerHTML =
-			"<input type='button' value='추가' onclick='addItems();'>";
+			"";
 			
 			//alert(title_table.rows.length)
+			
+			
 		if(index2 > 10){
 			alert("더이상 항목을 추가할 수 없습니다.");
 			return;
@@ -84,7 +88,6 @@
 			
 		</table>
 		<br><br>
-		
 	    <input type="submit" onclick="goSubmit()" value="올리기">
 </form>
 </body>
