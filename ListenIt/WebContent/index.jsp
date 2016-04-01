@@ -138,15 +138,11 @@ function checkReverse(){
    
 	<div id="big_navi">
 		<ul>
-			<li><a href="#">TOP_TEE</a><span class="boder"></span></li>
-			<li><a href="#">OUTER</a><span class="boder"></span></li>
-			<li><a href="#">OUTWEAR</a><span class="boder"></span></li>
-			<li><a href="#">BLOUSE</a><span class="boder"></span></li>
-			<li><a href="#">SKIRT</a><span class="boder"></span></li>
-			<li><a href="#">DRESS</a><span class="boder"></span></li>
-			<li><a href="#">TOP_OES.BAG<span class="boder"></span></a></li>
-			<li><a href="#">ACCESSORY<span class="boder"></span></a></li>
-			<li><a href="#">ON SALE<span class="boder"></span></a></li>
+			<li><a href="#">TOP 100</a><span class="boder"></span></li>
+			<li><a href="#">장르별 차트</a><span class="boder"></span></li>
+			<li><a href="#">최신 음악</a><span class="boder"></span></li>
+			<li><a href="#">장르별 음악</a><span class="boder"></span></li>
+			<li><a href="#">고객지원</a><span class="boder"></span></li>
 		</ul>
 	</div>
   </div>
