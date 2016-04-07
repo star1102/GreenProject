@@ -19,8 +19,7 @@
 	    self.close();
 	}
 	
-	var items = 0;
-	
+	var items = 0;	
 	function addItems(){ // 업로드 항목 추가 스크립트
 		items++;		
 		var title_table = document.getElementById("title_table");
