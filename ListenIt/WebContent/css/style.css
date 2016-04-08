@@ -136,3 +136,65 @@
 		text-overflow:ellipsis;
 		padding:0 10px;
 	}
+	
+	nav{
+		height:30px;
+		width:100%;
+		background-color:#000000;
+		margin:0;
+		padding:0;
+		background-repeat: repeat-x; /* 배경이미지를 X 축으로 반복 */
+		background-position: top;  /* 배경이미지의 위치 지정 */
+
+	}
+	
+
+	nav ul#dropdown{
+		list-style-none;
+		padding: 15px 0 0 15px;
+		
+	}
+	
+	nav ul#dropdown li{
+		float:left;
+		margin:0;
+	}
+	
+	nav ul#dropdown li a {
+		color:#ffffff;
+		padding:0 30px;
+		height: 20px;
+		line-height:3px;
+		text-decoration: none;
+		display: block;
+	}
+	
+	nav ul#dropdown li a:hover{
+		color:#FFCC00;
+		text-shadow:2px 2px 3px #000;
+	}
+	
+	nav ul#dropdown li ul {
+		margin:0px 0 0 0;
+		padding:0;
+		list-style:none;
+		position:absolute;
+		visibility:hidden;
+		z-index:1;
+		
+	}
+
+	nav ul#dropdown li ul li{
+		float:none
+	}
+	nav ul#dropdown li ul li a{
+		width:auto;
+		padding:17px 30px 7px 15px;
+		background: #000000;
+		font-size:0.9em
+		display:block;
+	} 
+	
+	nav ul#dropdown li ul li a:hover{
+		background:#c0c0c0;
+	} 

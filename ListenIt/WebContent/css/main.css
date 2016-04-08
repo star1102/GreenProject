@@ -1,0 +1,147 @@
+@CHARSET "EUC-KR";
+*{margin:0;padding:0;
+vertical-align:middle;}
+
+body{
+	
+	font-family:"Dotum".Arial.serif;
+	font-size:1em;
+	color:#666;
+	line-heigth: 1.5em;
+	font-weight:normal;
+	background-color:#FFF;
+	
+}
+	 img{
+	 	border:none;
+	 }
+	 a {
+	 	text-decoration:none;
+	 	color: #ffffff;
+	 	}
+	 a:hover{color:#F60;
+	 	text-decoration: none;
+	 }
+	
+	 .clear{
+	 	clear:both;}
+
+	 header{
+	 	background-image: url(../img/music2.png);
+	 	background-repeat: no-repeat; 
+	 	background-position: top; /*배경 이미지 위치 지정*/	
+	 	height:500px;
+	 	margin:0;
+	 	padding:0;
+	 	
+	 }
+	 header#logo{
+	 	padding:26px 0 20px 28px;
+	 	width:240px;
+
+	 }
+	 header #head_link{
+	 float:right;
+	 font-size:1em;
+	 }
+	 header #head_link ul{
+	 list-style:none; /*리스트 스타일 제거*/
+	 }
+	 header #head_link li{
+	 float:left;
+	 padding:0 8px; /* 패딩값을 상하 0 좌우 8픽셀 적용 */
+	 border-right:1px solid #ffffff; /*각 메뉴 사이에 구분선 적용*/
+	 }
+	 header #head_link.no_line{
+	 border-right:none;
+	 }
+	
+	header #search{
+	 	margin:0; 
+	 	padding:0;
+	 	float:right;
+	 	position: relative;
+    	right:40%; 
+	 }
+	header #search .main_input{
+	width:350px;
+	height:30px;
+	border:#336699 3px solid; 
+	padding:0 5px;
+	}
+	
+	header #search .btn1{
+	background-color:#369;
+	border:solid 1px #369;
+	color: #FFF;
+	height:28px;
+	width:55px;
+	margin-left:2px;
+	}
+	
+	#wrap{
+		width:900px;
+		margin:0 auto;
+		text-align:left;
+	}
+	nav{
+		height:50px;
+		width:100%;
+		background-color:#ffffff;
+		margin:0;
+		padding:0;
+		background-repeat: repeat-x; /* 배경이미지를 X 축으로 반복 */
+		background-position: top;  /* 배경이미지의 위치 지정 */
+
+	}
+	
+
+	nav ul#dropdown{
+		list-style-none;
+		padding: 15px 0 0 15px;
+		
+	}
+	
+	nav ul#dropdown li{
+		float:left;
+		margin:0;
+	}
+	
+	nav ul#dropdown li a {
+		color:#FFF;
+		padding:0 30px;
+		text-decoration: none;
+		display: block;
+	}
+	
+	nav ul#dropdown li a:hover{
+		color:#FFCC00;
+		text-shadow:2px 2px 3px #000;
+	}
+	
+	nav ul#dropdown li ul {
+		margin:10px 0 0 0;
+		padding:0;
+		list-style:none;
+		position:absolute;
+		visibility:hidden;
+		z-index:1;
+		
+	}
+
+	nav ul#dropdown li ul li{
+		float:none
+	}
+	nav ul#dropdown li ul li a{
+		width:auto;
+		padding:7px 30px 7px 15px;
+		background: #f5f5f5;
+		font-size:0.9em
+		display:block;
+	} 
+	
+	nav ul#dropdown li ul li a:hover{
+		background:#0099ff;
+	
+	} 
+	
