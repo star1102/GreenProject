@@ -55,10 +55,11 @@ public class UploadProcAction implements CommandAction {
 		}
 		 		
         for(int i=0; i<fileNames.size(); i++){
-        	newFileName = fileNames.get(i).substring(0 , fileNames.get(i).lastIndexOf(".")) + 
+        	String trimName = fileNames.get(i).replace(" ", "_");
+        	newFileName = trimName.substring(0 , fileNames.get(i).lastIndexOf(".")) + 
 	 				"_" + 
 	 					simDf.format(new Date(currentTime)) + 
-	 					fileNames.get(i).substring(fileNames.get(i).lastIndexOf("."));
+	 					trimName.substring(fileNames.get(i).lastIndexOf("."));
 	        // 업로드된 파일 객체 생성
 	        File oldFile = new File(path + fileNames.get(i));
 	         
