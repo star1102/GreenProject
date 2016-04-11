@@ -55,7 +55,7 @@ document.onclick = dropdown_close;
 		<input name="input" type="text" class="main_input">
 		<input name="search" type="button" value="검색" class="btn1">
 	</form>
-  </div>
+    </div>
   </header>
   
   <div class="clear"></div>

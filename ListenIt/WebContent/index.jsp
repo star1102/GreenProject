@@ -144,14 +144,25 @@ document.onclick = dropdown_close;
 		</ul>
 	</div><!-- navi -->
 <br>
+
+	<header>
+	<br>
+	<div id="search">
+	<form>
+		<input name="input" type="text" class="main_input">
+		<input name="search" type="button" value="검색" class="btn1">
+	</form>
+    </div>
+  </header>
+  
+<!--   
 	<table>
 		<tr>
 			<td>
 			<span id="logo">
 		    <a href="xmlParse.jsp"><img src="img/title.jpg" width="200" height="108" alt="logo" /></a>
-	    	</span><!-- logo -->
+	    	</span>  //logo 
 	    	</td>
-    		
     		<td style = "padding-left:500px;">
     		<form name="loginform">
     		<table>	
@@ -164,9 +175,8 @@ document.onclick = dropdown_close;
 			</form>
 			</td>
 		</tr>
-	</table>
-<br>
-   
+	</table> -->
+
 	<div>
 	<nav>
   	<ul id="dropdown">
