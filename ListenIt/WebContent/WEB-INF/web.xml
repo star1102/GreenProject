@@ -4,7 +4,7 @@
   <welcome-file-list>
     <welcome-file>index.it</welcome-file>
   </welcome-file-list>
-  
+ 
   <resource-ref>
     <description>project_db</description>
     <res-ref-name>jdbc/project_db</res-ref-name>
